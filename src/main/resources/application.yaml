@@ -1,0 +1,45 @@
+spring.datasource.url: jdbc:h2:file:./camunda-h2-database
+
+camunda:
+  bpm:
+    admin-user:
+      id: demo
+      password: demo
+    plugin:
+      mail:
+        notification:
+          enabled: false
+        # send mails via SMTP
+        transport.protocol: smtp
+
+        smtp:
+          host: smtp.gcom
+          port: 465
+          auth: true
+          ssl.enable: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+
+        # poll mails via IMAPS
+        store.protocol: imaps
+
+        imaps:
+          host: imap.gcom
+          port: 993
+          timeout: 10000
+          # if peek :   false then the polled mails are marked as read
+          peek: false
+
+        # additional config
+        poll.folder: INBOX
+        sender: USER@google.com
+        sender.alias: User Inc
+
+        attachment:
+          download: true
+          path: attachments
+
+        # credentials
+        user: USER@gcom
+        password: PASSWORD
